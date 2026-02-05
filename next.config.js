@@ -2,7 +2,7 @@
 const nextConfig = {
   output: 'standalone',
   images: {
-    // Новый формат настроек
+    // Это разрешает оптимизацию для локальных картинок
     remotePatterns: [
       {
         protocol: 'http',
