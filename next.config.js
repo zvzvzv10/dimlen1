@@ -1,11 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Вот эта строчка — самая главная для работы в облаке!
-  output: 'standalone', 
-  
+  output: 'standalone',
   images: {
-    domains: ["localhost"],
-    formats: ["image/webp"],
+    // Новый формат настроек
+    remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+      },
+    ],
+    formats: ['image/webp'],
   },
 };
 
