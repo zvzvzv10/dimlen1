@@ -1,9 +1,7 @@
 import { Header } from "@/components/sections/Header";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
-
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
-import { ContactForm } from "@/components/sections/ContactForm";
 import { EquipmentSection } from "@/components/sections/EquipmentSection";
 import { FAQSection } from "@/components/sections/FAQSection";
 import { Footer } from "@/components/sections/Footer";
@@ -11,6 +9,7 @@ import { ServiceSelection } from "@/components/sections/ServiceSelection";
 import { MapSection } from "@/components/sections/MapSection";
 import { TrustedBySection } from "@/components/sections/TrustedBySection";
 import { ConsultationForm } from "@/components/sections/ConsultationForm";
+import { ScrollDebugger } from "@/components/ScrollDebugger";
 
 export default function Home() {
   return (
@@ -19,7 +18,6 @@ export default function Home() {
         <Header />
         <AboutSection />
         <WhyChooseUs />
-    
         <ProjectsSection />
         <EquipmentSection />
         <ServiceSelection />
@@ -28,6 +26,7 @@ export default function Home() {
         <ConsultationForm />
         <MapSection />
         <Footer />
+        <ScrollDebugger />
       </div>
     </main>
   );

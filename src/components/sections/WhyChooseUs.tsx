@@ -1,6 +1,9 @@
+'use client';
+
 import React from "react";
 import { ActionButton } from "../ui/ActionButton";
 import { SectionTitle } from "../ui/SectionTitle";
+import { scrollToContact } from "@/lib/scrollUtils";
 
 export const WhyChooseUs = () => {
   return (
@@ -86,6 +89,7 @@ export const WhyChooseUs = () => {
         <div className="mt-12 md:mt-16 flex justify-center">
           <ActionButton 
             className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full text-lg shadow-xl hover:shadow-blue-500/20 hover:scale-105 transition-all duration-300"
+            onClick={scrollToContact}
           >
             Оставить заявку
           </ActionButton>

@@ -1,6 +1,10 @@
+'use client';
+
 import React from "react";
 import { ActionButton } from "../ui/ActionButton";
 import Image from "next/image";
+import Link from "next/link";
+import { scrollToContact } from "@/lib/scrollUtils";
 
 export const Footer = () => {
   return (
@@ -35,12 +39,12 @@ export const Footer = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Links & Text */}
             <div className="space-y-8">
-              <a 
+              <Link 
                 href="/privacy-policy" 
                 className="text-lg hover:text-blue-400 transition-colors"
               >
                 Политика конфиденциальности
-              </a>
+              </Link>
               <p className="text-lg">
                 Вам нужен лифт В эксплуатации надежный?<br />
                 Звоните нам! Димлэн всегда поможет!
@@ -53,6 +57,10 @@ export const Footer = () => {
                 className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 
                   rounded-full text-lg shadow-xl hover:shadow-blue-500/20 
                   hover:scale-105 transition-all duration-300"
+                onClick={(e) => {
+                  console.log("Footer button clicked");
+                  scrollToContact(e);
+                }}
               >
                 Оставить заявку
               </ActionButton>

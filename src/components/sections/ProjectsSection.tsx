@@ -7,84 +7,72 @@ import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import Lightbox from "yet-another-react-lightbox";
+import Video from "yet-another-react-lightbox/plugins/video";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "yet-another-react-lightbox/styles.css";
 
-interface ProjectImage {
+interface ProjectMedia {
   src: string;
   alt: string;
   category: string;
+  type: 'image' | 'video';
 }
 
-const projectImages: ProjectImage[] = [
+const projectMedia: ProjectMedia[] = [
+
+ 
   {
-    src: "/images/projects/bolshevichka.png",
-    alt: "Большевичка",
-    category: "Проект"
+    src: "/images/projects_sections_1000/otdelka_montazh.jpg",
+    alt: "отделка лифта",
+    category: "Проект монтажа и отделки лифтов",
+    type: "image"
   },
   {
-    src: "/images/projects/evreiskiycentr.png",
-    alt: "Еврейский центр",
-    category: "Проект"
+    src: "/images/projects_sections_1000/podemnik.jpg",
+    alt: "монтаж подъемника",
+    category: "монтаж подъемника",
+    type: "image"
   },
   {
-    src: "/images/projects/fazer.png",
-    alt: "Фазер",
-    category: "Проект"
+    src: "/images/projects_sections_1000/lift_montazh_2.jpg",
+    alt: "монтаж лифта",
+    category: "монтаж лифта",
+    type: "image"
   },
   {
-    src: "/images/projects/gemotest.png",
-    alt: "Гемотест",
-    category: "Проект"
+    src: "/images/projects_sections_1000/otdelka_lifta.jpg",
+    alt: "отделка лифта",
+    category: "отделка лифта",
+    type: "image"
   },
   {
-    src: "/images/projects/genetiki.png",
-    alt: "Генетики",
-    category: "Проект"
+    src: "/images/projects_sections_1000/montazh_gruzovogo.jpg",
+    alt: "монтаж грузового лифта",
+    category: "монтаж грузового лифта",
+    type: "image"
   },
   {
-    src: "/images/projects/gutabank.png",
-    alt: "Гута Банк",
-    category: "Проект"
+    src: "/images/projects_sections_1000/escalator_montazh_2.jpg",
+    alt: "монтаж эскалатора",
+    category: "монтаж эскалатора",
+    type: "image"
   },
   {
-    src: "/images/projects/metailinvest.png",
-    alt: "Металинвест",
-    category: "Проект"
-  },
-  {
-    src: "/images/projects/moldovia.png",
-    alt: "Молдова",
-    category: "Проект"
-  },
-  {
-    src: "/images/projects/nagatino.png",
-    alt: "Нагатино",
-    category: "Проект"
-  },
-  {
-    src: "/images/projects/NII.png",
-    alt: "НИИ",
-    category: "Проект"
-  },
-  {
-    src: "/images/projects/problemupr.png",
-    alt: "Проблемупр",
-    category: "Проект"
+    src: "/images/projects_sections_1000/montazh_avto.jpg",
+    alt: "монтаж автомобильного лифта",
+    category: "монтаж автомобильного лифта",
+    type: "image"
   },
 
   {
-    src: "/images/projects/talisman.png",
-    alt: "Талисман",
-    category: "Проект"
-  },
-  {
-    src: "/images/projects/volgogradskiy.png",
-    alt: "Волгоградский",
-    category: "Проект"
+    src: "/images/services/gallery/pol.jpg",
+    alt: "Замена напольного покрытия нестандартного размера",
+    category: "Замена напольного покрытия нестандартного размера",
+    type: "image"
   }
+
 ];
 
 export const ProjectsSection = () => {
@@ -115,24 +103,37 @@ export const ProjectsSection = () => {
                 className="h-full w-full"
                 onClick={(swiper) => openLightbox(swiper.realIndex)}
               >
-                {projectImages.map((image, index) => (
+                {projectMedia.map((media, index) => (
                   <SwiperSlide key={index} className="w-full">
                     <div className="relative w-full h-full">
-                      <Image
-                        src={image.src}
-                        alt={image.alt}
-                        fill
-                        className="object-cover transition-transform duration-300 group-hover:scale-105"
-                        priority={index === 0}
-                        quality={90}
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                      />
+                      {media.type === 'image' ? (
+                        <Image
+                          src={media.src}
+                          alt={media.alt}
+                          fill
+                          className="object-cover transition-transform duration-300 group-hover:scale-105"
+                          priority={index === 0}
+                          quality={90}
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                        />
+                      ) : (
+                        <video
+                          className="w-full h-full object-cover"
+                          controls
+                          playsInline
+                          loop
+                          muted
+                        >
+                          <source src={media.src} type="video/mp4" />
+                          Your browser does not support the video tag.
+                        </video>
+                      )}
                       {/* Category Label */}
                       <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-10">
                         <div className="px-4 py-2 bg-black/40 backdrop-blur-md rounded-full 
                           shadow-lg transition-all duration-300 group-hover:bg-black/60">
                           <span className="text-sm md:text-base text-white font-medium whitespace-nowrap">
-                            {image.category}
+                            {media.category}
                           </span>
                         </div>
                       </div>
@@ -155,20 +156,13 @@ export const ProjectsSection = () => {
                   </h2>
                 </div>
               }
-              subtitle={
-                <p className="text-lg md:text-xl text-gray-700 leading-relaxed mt-6">
-                  Просмотрите примеры наших работ
-                </p>
-              }
+              
             />
 
+            
+
             <div className="mt-8 md:mt-12">
-              <ActionButton 
-                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full text-lg shadow-lg hover:shadow-blue-500/20 hover:scale-105 transition-all duration-300 flex items-center gap-2"
-              >
-                <span>Смотреть больше</span>
-                
-              </ActionButton>
+         
             </div>
           </div>
         </div>
@@ -179,7 +173,22 @@ export const ProjectsSection = () => {
         open={lightboxOpen}
         close={() => setLightboxOpen(false)}
         index={lightboxIndex}
-        slides={projectImages.map(image => ({ src: image.src }))}
+        plugins={[Video]}
+        slides={projectMedia.map(media => 
+          media.type === 'video' 
+            ? {
+                type: "video",
+                poster: media.src.replace('.mp4', '.jpg'),
+                sources: [{
+                  src: media.src,
+                  type: "video/mp4",
+                }]
+              }
+            : {
+                src: media.src,
+                alt: media.alt
+              }
+        )}
       />
     </section>
   );

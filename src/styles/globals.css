@@ -1,13 +1,52 @@
 @import "./header-background.css";
 
-// ... existing styles ...
-
-/* Add these to prevent overflow issues */
+/* Base styles */
 html,
 body {
   overflow-x: hidden;
   width: 100%;
   position: relative;
+}
+
+/* Header specific styles */
+.header-nav-link {
+  @apply text-gray-300 hover:text-white transition-colors duration-200;
+}
+
+.header-dropdown {
+  @apply absolute top-full right-0 bg-gray-900/95 backdrop-blur-sm rounded-lg shadow-xl 
+         transform transition-all duration-200 ease-in-out;
+}
+
+.header-dropdown.open {
+  @apply opacity-100 translate-y-0 visible;
+}
+
+.header-dropdown.closed {
+  @apply opacity-0 -translate-y-2 invisible;
+}
+
+/* Mobile menu transition */
+.mobile-menu-enter {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.mobile-menu-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 200ms, transform 200ms;
+}
+
+.mobile-menu-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mobile-menu-exit-active {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 200ms, transform 200ms;
 }
 
 /* Fix Swiper container on mobile */

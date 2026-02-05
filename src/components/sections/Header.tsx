@@ -8,6 +8,7 @@ import { HeaderBackground } from "../ui/HeaderBackground";
 import Image from 'next/image';
 import Link from "next/link";
 import { FloatingActionButton } from "../ui/FloatingActionButton";
+import { scrollToContact } from "@/lib/scrollUtils";
 
 export const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -152,6 +153,10 @@ export const Header = () => {
 
               <ActionButton 
                 className="hidden sm:inline-flex bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full items-center justify-center shadow-lg hover:shadow-blue-500/20 hover:scale-105 transition-all duration-300"
+                onClick={(e) => {
+                  console.log("Header nav button clicked");
+                  scrollToContact(e);
+                }}
               >
                 <span>Оставить заявку</span>
               </ActionButton>
@@ -184,6 +189,10 @@ export const Header = () => {
 
             <ActionButton 
               className="w-full sm:w-auto max-w-[280px] bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full flex items-center justify-center shadow-lg hover:shadow-blue-500/20 hover:scale-105 transition-all duration-300 text-lg font-medium"
+              onClick={(e) => {
+                console.log("Header hero button clicked");
+                scrollToContact(e);
+              }}
             >
               <span>Оставить заявку</span>
             </ActionButton>

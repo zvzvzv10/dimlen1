@@ -3,6 +3,7 @@
 import React from "react";
 import { SectionTitle } from "../ui/SectionTitle";
 import { ActionButton } from "../ui/ActionButton";
+import { scrollToContact } from "@/lib/scrollUtils";
 
 const services = [
   {
@@ -102,6 +103,10 @@ export const ServiceSelection = () => {
           <ActionButton 
             className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full text-lg 
                      shadow-xl hover:shadow-blue-500/20 hover:scale-105 transition-all duration-300"
+            onClick={(e) => {
+              console.log("Get consultation button clicked");
+              scrollToContact(e);
+            }}
           >
             Получить консультацию
           </ActionButton>

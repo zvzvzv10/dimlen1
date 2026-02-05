@@ -39,14 +39,14 @@ const projects = [
   },
   {
     id: 7,
-    name: "Институт общей генетики",
-    image: "/images/projects/genetiki.png",
+    name: "ПШО «Москва»",
+    image: "/images/projects/genetiki.jpg",
     description: "Обслуживание лифтов"
   },
   {
     id: 8,
     name: "Гемотест",
-    image: "/images/projects/gemotest.png",
+    image: "/images/projects/gemotest.jpg",
     description: "Техническое обслуживание"
   },
   {

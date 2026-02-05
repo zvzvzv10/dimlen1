@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { ActionButton } from "./ActionButton";
+import { scrollToContact } from "@/lib/scrollUtils";
 
 export const FloatingActionButton = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -24,11 +25,9 @@ export const FloatingActionButton = () => {
                    shadow-lg shadow-blue-500/30 hover:shadow-blue-400/50
                    hover:scale-105 transition-all duration-300
                    animate-fade-slide-up animate-pulse-subtle"
+        onClick={scrollToContact}
       >
-   
           Оставить заявку
-          
-       
       </ActionButton>
     </div>
   );
