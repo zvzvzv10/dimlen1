@@ -1,0 +1,36 @@
+@import "./header-background.css";
+
+// ... existing styles ...
+
+/* Add these to prevent overflow issues */
+html,
+body {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
+
+/* Fix Swiper container on mobile */
+.swiper-container {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  width: 100% !important;
+}
+
+/* Add support for backdrop blur in Safari */
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+  .backdrop-blur-md {
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+  }
+}
+
+/* Fallback for browsers that don't support backdrop-filter */
+@supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+  .backdrop-blur-md {
+    background-color: rgba(0, 0, 0, 0.75);
+  }
+}
