@@ -4,20 +4,22 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: '/:path*',
+        // Если запрос пришел на корень (/) с хоста www.dimlen.ru
+        source: '/',
         has: [
           {
             type: 'host',
             value: 'www.dimlen.ru',
           },
         ],
-        destination: 'https://dimlen.ru/:path',
+        // Перенаправить на основной домен
+        destination: 'https://dimlen.ru',
         permanent: true,
       },
     ]
   },
   images: {
-    // Это разрешает оптимизацию для локальных картинок
+    // Оставляем ваши настройки картинок
     remotePatterns: [
       {
         protocol: 'http',
