@@ -11,7 +11,7 @@ const nextConfig = {
             value: 'www.dimlen.ru',
           },
         ],
-        destination: 'https://dimlen.ru/:path*',
+        destination: 'https://dimlen.ru/:path',
         permanent: true,
       },
     ]
